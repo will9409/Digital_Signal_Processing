@@ -1,0 +1,262 @@
+Analog값 : 높이가 일정한 신호 ex 목소리
+Digital signal : mp3 등.
+Sampling : 시간적으로 discrete하게 만들어줌
+Quantization : 사이즈적으로 discrete하게 ( 소수점을 빼준다던가)
+
+Signal을 얻는 것 = sensor  ex) 마이크, 스마트폰 지문인식,음성인식 등
+Fixel도 sampling하는 곳
+
+quantization하고 나서 제일 가까운 양화값을 정하는데, 원래의 값과 양화값의 차이를 quantization error 라고 한다.
+
+	
+Signal processing system : smart phone 이라고 생각하면 된다.
+A/D > Analong to digital
+Speech recognition : 사람의 목소리를 인식
+Spectral : 주파수
+Voice recognition : 소리를 인식-0
+
+노멀라이즈 : 사운드 크기 조절
+Apodize : 소리크기를 점차 줄이고 키움
+
+Unbias : V의 중간을 x축에 걸치게 만듬
+
+Ts : 0.01, 0.02 .. 샘플링한 시간
+하모닉스 4p 100> 1000
+
+헤르츠가 높을수록 프레임레이트를 높여야 한다.
+샘플링을 너무적게하면 간섭이일어난다.
+
+Make wave > 샘플링하는것
+
+Sampling freq 가 1만일시에는 5000이 한계
+2만일떄는 1만이 한계
+
+Aliasing : 다른 주파수 두개를 샘플링 했을시에 샘플링값이 우연히 같게 나올 수 있는 상황을 말한다.
+
+Nyquist frequency : 임계 주파수  >> 한 period당 2번씩 이상은 해야 함.
+Ys : 샘플링한 값들. 12페이지의 샘플링에 나온 값들을 말함.
+Framerate : 초당 샘플링 횟수
+1/framerate : 샘플링 간격
+
+그래프에서
+hs: frequency 성분의 크기
+fs: frequency rfftfreq(n,d)  n은 샘플링 간격 , d 샘플링한값, 즉 웨이브의 크기
+hs,fs 둘다 array임. 그러므로 각각의 숫자별로 알 수 있음.
+r : real
+rfft : 웨이브가 real value만 포함했을 떄 쓸 수 있음(complex 말고)
+
+a+bi     a : realy,  b:imaginary(허수)   << complex
+
+Aei0    >> A(amplitude)는 freq의 크기, 0(Phase는 누적된 주파수)는 각도 >> freq과 크기의 값에서 각도는 freq의 값을 말함 = radian값을 나타냄
+
+Chirp : 주파수가 시간이 지남에 따라 변형됨
+
+Dts : difference ts
+Phis : 0
+Dphis : 샘플링한 간격동안 주파수가 얼마나 변동됐는가
+
+Cumsum(큐밀리티브 섬) : 쌓아서 더하는 것을 말함.
+Insert(phases, 0 ,0 )    맨처음에 0을 입력한다. 파이썬은 0부터 시작하므로
+위상의 미분을 하면 주파수가 나타난다.
+7p ._evaluate 는 private 클래스이다. 자신만 사용하는 클래스
+
+Duration : ~초 동안
+
+주파수의 크기는 주파수의 대역의 길이와 관련이 있다.
+
+블라키한 모양을 없애고싶으면 세그먼트 간격을 줄이면 된다.
+
+Resolution : 해상도
+Power of 2 : 2의 승수
+
+Framerate : 샘플링 수
+Full range 는 framerate / 2
+Time resolution : 2,4,8,... > 해상도가 높을수록 점들이 많이 존재 
+ 
+
+Uniform distribution : 경우의 수가 나올 확률이 다 일정한 경우를 말한다. 예시 : 주사위
+Spectrum.plot_power() < amp를 제곱한 경우를 그림.
+
+Normalization : 공정하게 비교를 할 수 있도록 해주는 것. 예를 들어 클래스와 다른 클래스에서 각각 키를 재고 각각 클래스에서 키가 큰 편에 속하는 사람들을 
+뽑아내고 각각 가장 키가 큰 사람을 1로 놓고 그다음 작은순서로 0.98, 0.90 이러한 방식으로 나열하여 비교하기 쉽게 만든다,
+
+브라우니안 노이즈 : 이 전 값에서 플러스 얼마, 마이너스 얼마 이런식으로 움직이게 된다(dependent)
+Cumsum : 누적 하여 덧셈
+Unbias : 평균을 0으로 만들어줌.
+
+선형회기 : 모집단의 확률에 추측한 값의 선을 그어서 리니어한 선에 맞추는것을 리니어 리그레이션이라고 한다. 에러가 많게 될 경우가 있으므로,
+non-linear regretion을쓰는데, 경우가 너무 많다.
+6 노이즈 
+12p ,  2는 Y절편, k는 X절편.
+Estimate_slope(self) < 기울기 측정
+Slope : 기울기
+Intercept : 절편
+베이스가 e인 자연로그이다.
+상수는 중요하지않고 기울기가 중요하다.
+
+핑크노이즈 만드는법 > 화이트노이즈를 만들고 low-pass 필터링을 하면 된다.
+standard deviation : 어떠한 집단 분포의 위치나 분포 정도를 나타내는 것.
+
+베타값 활용 > 가우시안 노이즈인가 알아봄
+
+Apodize -> 소리가 급격하게 커지는 걸 막아줌
+
+Correlation : 상관관계
+
+Lec 07
+variable은 함수의 일반적인 변수가 아닌 시그널로 볼 수 있다. 시간에 따라 변할 수 있다.
+하나의 값을 알면, 다른 것에 대한 정보도 어느 정도 알 수 있다.(prediction)
+
+p -> 로우, 뮤x -> 배열의 평균값, xi -> X(t) 시간에 따라 변하는 배열값
+
+로우(6x)^2 = 1/N시그마(xi-뮤x)^2
+X=Y   ->  p=1=시그마(xi-mx)^2/N*1.N시그마(xi-mx)^2
+상관관계가 0일경우는 곤란하고, 상관관계가 1인경우에는 상대적인 상태를 보인다 (내가 1이면 상대도 1인 경향이 있다)
+
+From numpy inport all
+T = array([1,3, ..., 3.9])
+P = array >
+    T   P
+T  pTT pTP
+P  pTP p PP
+
+Offset = 초기 0에서의 y값(radian)
+1인경우-> 0.78(파이/4)~1.57(파이/2)사이의 값을 나타냄
+Degree of freedom -> 식이 10개가 있고 변수가 20개가 있는 경우엔 변수를 알아낼 수 없다.
+식의 갯수와 변수의 갯수가 차이날 때 자유도가 정해진다. 변수10개의 값을 임의로 정하면 나머지 10개의 변수에 대해서 풀 수 있게 되는데 이런곳에서 자유도가 나타난다. 하지만 우리는 통계적으로 쓰지 않으므로 ddof = 0으로 쓴다. 
+
+corr에서는 길이를 맞춰주어야 정확한 값이 나온다.
+Corr = np.corrcoef(y1,y2, ddof = 0)[0, 1] 0> [0][1]의 값만 받겠다는 뜻.
+
+브라우니안노이즈는 전값 +a, 후값-b를하여 정해졌다. 가우시안노이즈는 그다음위치는 그전 위치와 전혀 관계가 없다(uncorrelated)
+
+Sin.thinkdsp를 해도 아직 아날로그값이다.
+
+Framerate=11025   -> 1/11025초
+
+핑크노이즈는 베타와 관계가 있어서 가우시안노이즈보다는 높고 브라우니안노이즈보다는 상관관계가 낮다.(베타는 0~2까지 변한다) 2에 가까울수록 브라우니안노이즈에 
+가깝다. 사이는 핑크 노이즈 이다.
+
+Auto : 자기자신의
+
+lag -> correlation
+ 0	  1
+ 1	  0.99
+ 2	  0.97
+ 3	  ;
+ 4	  ;
+ 5	  ;
+ 49	 0.7            -> corrs에 들어있는 값. Lec 07 -> 8p
+Lag = 0 -> 1,2,3,4,5,6
+	   1,2,3,4,5,6
+Lag = 1 -> 2,3,4,5,6
+	   1,2,3,4,5
+-> windowing이라고 함.
+
+베타값이 낮으면 가우시안에 가깝다
+값이 천천히 낮아지는것과 값이 급격하게 낮아지는 경우가 있는데, 이러한 경우를 long range dependence라고 한다.
+
+wav -> discrete signal
+clear peak near 400Hz -> fundemental noise 400
+
+Freq resol 100Hz -> 100hz정도만 구별할 수 있다는 뜻이다. 400hz인데 실제로405hz일수도 있다. 350~450사이의 값은 될 수 있지만 460hz가 400hz로 
+착각되진 않는다.
+왜 100hz인가? -> 예를들어 40000Hz를 400samples로 하면 20000hz(Nyquist rate)까지 측정가능한데, 400Hz(sample)이면 segment 200개로
+2만을 나타내야 한다. 그러러면 200x100이어야하므로 해상도가 100hz이어야 하는 것이다.
+
+segment를 늘이면 해상도가 높아진다. 그에대한 문제로 다른 부담이 있다.
+Resolution(Hz)
+
+Y1 -> lag부터 끝까지
+Y2 -> 
+10p -> autocorrelation 함수를 사용하여 그렸다.
+1에서 떨어지기만 하므로 주기가 없다고 판단한다. 반전이 있을 수는 있지만.
+11p 선의 색의 농도는 hz의 크기를 의미
+14p lag= 100, 441hz
+    Lag= 102 432hz, so <10hz
+
+Normalization -> 규범화, 보통화 -> 비교의 기준을 맞게 바꾸어준다. 비교할 때 자신과 대상의 평균을 같게 0으로 만들어준다
+
+15p. Xi yi는 다 1차원배열이다.
+Synthesis  : 주파수의 집합이 주어진다. 웨이브를 주파수로 만듬
+Wave -> discrete signal
+수식은 벡터로 계산이 대부분 가능하지만 숫자의 dimention이 크다.
+Numpy array -> numpy 에서의 배열 계산이 빠르다.
+Google Tensorflow -> 매트릭스인데, numpy array보다 빠르다. GPU가 있으면 빠르다.
+Analysis (분석 ) -> 시그널이 주어지고 주파수의 집합이 주어지게 된다.
+
+Synthesize1 주파수 성분 크기
+출력은 웨이브
+
+ts : 샘플링한 시간 그래프의 x축 값들
+fs : freq component
+ Y = Ma
+Y= 입력 signal 
+
+6p e -> 합성한 웨이브폼의
+
+Fs : set of frequency
+Ts : 샘플링한시간
+Square(정사각형) matrix : m = n
+a = amp
+
+Inner product : 행렬곱이 1개로 표현되는 것
+
+Outer product : 행렬이 MxN으로 표현되는것
+
+ys는 tynthesize를 100~400으로 했으므로 fs값이 100 200 300 400임을 알 수 있다.
+[:n] -> n까지의 범위
+
+임의의 주파수가 들어오면 어떠한 주파수들이 들어오고 성분이 어떤지 알아야 할 때 analize한다.
+=> 신호가 들어오면 주파수성분을 알 수 있다.
+Orthogonal : 직각의 -> 내적벡터를하면 값이 0이 니온다.
+벡터 = x축과 y축에 대해서 X x Y x cos 90도 = 0이므로 Orthogonal하다.
+Orthogonal하다 = correlation이 하나도 없다.=> 상관관계가 없다는 것은 y를 x로 표현할 수 없다는 뜻이다.
+
+소수 = prime number => 다른 소수로 나타낼 수 없다 => Orthogonal => 기본이 되는 숫자다.
+합성수 = composite number 
+
+9p np.arrange = 1,2,3,4 / N * time_unit을 해주어야 0.001/4 0.002/4 0.003/4 0.001/4 이러한 시간이 나옴.
+ Ts = [ 0 , 0.001/4 , 0.002/4 , 0.003/4 ]
+ Fs = [ 0 , 500 , 1000 , 1500 ]
+
+주파수를 샘플링해서 ys를 뽑아서 DCT-4에 갖다주면 성분을 알 수 있다.
+
+Quantization : 예를 들어 5로 나누면 5보다 작은 수들은 다 0이 된다. 복원은 5를 다시 곱해준다.
+12p M의 inverse가 M/2이기때문에 2를 곱해준다.
+Amps : 주파수 성분
+Ys -> 웨이브폼으로 변형?이 맞나?
+
+1e-16정도의 차이가 나는 이유 -> 자료형의 데이터 크기 때문에 컴퓨터의 계산 측면에서 값이 조금씩 차이가 있을 수 있다.
+Z = np.exp(1j * phi) = e^ie
+
+Ae^iphi0 = amp
+
+	R		C
+M   orthogonal		unitary
+      M^-1=M^7	M=M*
+	M^T*M = I	M*M= I
+                             -> conjugate transpose
+Imaginary part is 0
+
+Autocorrelation : 자기 자신의 상관관계 계산
+Cross correlation : 두개의 상관관계
+
+별과 애스터리스크를 구별해야한다.
+
+Pandas : 데이터 통계 분석자료
+
+7p 회색 그래프 : square graph의 주파수 성분
+
+Fundemental frequency : 440Hz
+8p amps2 : smoothing하고 convolution한것 
+Cutoff frequency : low pass filte에서도 어디에서 cutoff가 되느냐에 따라 다르게 나타난다.
+
+Decomposition : devide
+
+Characterization : 각각의 경우에 따라 output을 기록해서 특성을 파악하는것
+
+Impulse 를 넣는다는 의미는 모든 주파수성분을 1로 채운다는 뜻이다
+-> 일일이 값을 다 넣지 않을 수 있다.
+
+Filtered : impulse response
